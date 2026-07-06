@@ -668,32 +668,39 @@ def main():
         )
         return
 
-    # Upload and capture TABS
-    tab_upload, tab_camera, tab_samples = st.tabs(["📁 Upload File", "📸 Camera Capture", "🖼 Sample Images"])
+    # Input method selection to isolate webcam prompt requests
+    tab_custom, tab_samples = st.tabs(["👤 Analyze Portrait", "🖼 Sample Images"])
     
     image_bytes = None
     image_name = None
 
-    with tab_upload:
-        uploaded_file = st.file_uploader(
-            "Upload image",
-            type=["jpg", "jpeg", "png"],
-            label_visibility="collapsed",
-            key="main_file_uploader"
+    with tab_custom:
+        input_mode = st.radio(
+            "Select Input Source",
+            options=["📁 Upload Image", "📷 Use Camera"],
+            horizontal=True,
+            key="input_source_selection"
         )
-        if uploaded_file is not None:
-            image_bytes = uploaded_file.getvalue()
-            image_name = uploaded_file.name
-
-    with tab_camera:
-        camera_file = st.camera_input(
-            "Capture Portrait",
-            label_visibility="collapsed",
-            key="main_camera_input"
-        )
-        if camera_file is not None:
-            image_bytes = camera_file.getvalue()
-            image_name = "captured_portrait.jpg"
+        
+        if input_mode == "📁 Upload Image":
+            uploaded_file = st.file_uploader(
+                "Choose image...",
+                type=["jpg", "jpeg", "png"],
+                label_visibility="collapsed",
+                key="main_file_uploader"
+            )
+            if uploaded_file is not None:
+                image_bytes = uploaded_file.getvalue()
+                image_name = uploaded_file.name
+        else:
+            camera_file = st.camera_input(
+                "Capture Portrait",
+                label_visibility="collapsed",
+                key="main_camera_input"
+            )
+            if camera_file is not None:
+                image_bytes = camera_file.getvalue()
+                image_name = "captured_portrait.jpg"
 
     with tab_samples:
         st.markdown('<p style="font-size:13.5px; color:#94A3B8; margin-bottom:12px;">Select a sample portrait to run the prediction pipeline:</p>', unsafe_allow_html=True)
