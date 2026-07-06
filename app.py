@@ -27,34 +27,34 @@ if 'last_processed' not in st.session_state:
 if 'current_result' not in st.session_state:
     st.session_state['current_result'] = None
 
-# Premium Custom CSS
+# Premium Custom CSS (Midnight Obsidian & Aurora Gold Theme)
 st.markdown(r"""
     <style>
     @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap');
 
     /* Global styles */
     html, body, [data-testid="stAppViewContainer"], [data-testid="stHeader"] {
-        background-color: #0F172A !important;
-        color: #F8FAFC !important;
+        background-color: #09090B !important;
+        color: #F4F4F5 !important;
         font-family: 'Outfit', sans-serif !important;
     }
     
     /* Sidebar styling */
     [data-testid="stSidebar"], [data-testid="stSidebar"] > div {
-        background-color: #0F172A !important;
-        border-right: 1px solid #1E293B !important;
+        background-color: #09090B !important;
+        border-right: 1px solid #18181B !important;
     }
     
     .sidebar-section {
-        background-color: #1E293B;
+        background-color: #18181B;
         padding: 20px;
         border-radius: 16px;
-        border: 1px solid #334155;
+        border: 1px solid #27272A;
         margin-bottom: 20px;
     }
     
     .sidebar-title {
-        color: #6366F1;
+        color: #E2B87F;
         font-size: 16px;
         font-weight: 700;
         margin-bottom: 12px;
@@ -65,30 +65,30 @@ st.markdown(r"""
     
     .tech-tag {
         display: inline-block;
-        background-color: #334155;
-        color: #E2E8F0;
+        background-color: #27272A;
+        color: #E4E4E7;
         padding: 4px 10px;
         border-radius: 20px;
         font-size: 12px;
         margin: 4px 2px;
         font-weight: 500;
-        border: 1px solid #475569;
+        border: 1px solid #3F3F46;
     }
 
     /* Tabs styling */
     .stTabs [data-baseweb="tab-list"] {
         gap: 8px;
-        background-color: #1E293B;
+        background-color: #18181B;
         padding: 6px;
         border-radius: 16px;
-        border: 1px solid #334155;
+        border: 1px solid #27272A;
     }
 
     .stTabs [data-baseweb="tab"] {
         height: 40px;
         border-radius: 12px;
         background-color: transparent;
-        color: #94A3B8;
+        color: #A1A1AA;
         font-weight: 600;
         font-size: 14px;
         transition: all 0.2s ease;
@@ -96,29 +96,43 @@ st.markdown(r"""
     }
 
     .stTabs [aria-selected="true"] {
-        background-color: #334155 !important;
-        color: #F8FAFC !important;
+        background-color: #27272A !important;
+        color: #F4F4F5 !important;
     }
 
     /* File uploader & Camera container */
     [data-testid="stFileUploader"], [data-testid="stCameraInput"] {
-        background-color: #1E293B !important;
-        border: 2px dashed #475569 !important;
+        background-color: #18181B !important;
+        border: 2px dashed #3F3F46 !important;
         border-radius: 24px !important;
         padding: 20px !important;
         transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
         margin-top: 15px;
     }
+    [data-testid="stFileUploader"]:hover, [data-testid="stCameraInput"]:hover {
+        border-color: #E2B87F !important;
+        transform: translateY(-2px);
+    }
     
     [data-testid="stFileUploader"] button {
-        background-color: #6366F1 !important;
-        color: white !important;
+        background-color: #C5A880 !important;
+        color: #09090B !important;
         border-radius: 12px !important;
         border: none !important;
         padding: 8px 16px !important;
-        font-weight: 600 !important;
+        font-weight: 700 !important;
+        transition: all 0.2s !important;
+    }
+    [data-testid="stFileUploader"] button:hover {
+        background-color: #E2B87F !important;
+        box-shadow: 0 4px 12px rgba(226, 184, 127, 0.25) !important;
     }
     
+    /* Hide default streamlit file uploader helper text */
+    [data-testid="stFileUploader"] section > div {
+        color: #A1A1AA !important;
+    }
+
     /* Rounded image preview */
     .preview-container {
         display: flex;
@@ -128,8 +142,8 @@ st.markdown(r"""
     
     .preview-img {
         border-radius: 24px;
-        box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.4);
-        border: 2px solid #334155;
+        box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.6);
+        border: 2px solid #27272A;
         transition: transform 0.3s ease;
         max-width: 100%;
         height: auto;
@@ -138,45 +152,45 @@ st.markdown(r"""
         transform: scale(1.02);
     }
 
-    /* Glassmorphic Cards */
+    /* Glassmorphic General Cards */
     .glass-card {
-        background: rgba(30, 41, 59, 0.45) !important;
+        background: rgba(24, 24, 27, 0.65) !important;
         backdrop-filter: blur(12px) !important;
         -webkit-backdrop-filter: blur(12px) !important;
-        border: 1px solid rgba(255, 255, 255, 0.08) !important;
+        border: 1px solid rgba(255, 255, 255, 0.05) !important;
         border-radius: 20px !important;
         padding: 24px !important;
         margin-bottom: 20px !important;
-        box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3) !important;
+        box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.4) !important;
         transition: all 0.3s ease !important;
     }
     .glass-card:hover {
         transform: translateY(-4px) !important;
-        border-color: rgba(99, 102, 241, 0.3) !important;
-        box-shadow: 0 12px 40px 0 rgba(99, 102, 241, 0.15) !important;
+        border-color: rgba(226, 184, 127, 0.25) !important;
+        box-shadow: 0 12px 40px 0 rgba(226, 184, 127, 0.08) !important;
     }
 
-    /* Result Card Glassmorphism */
+    /* Result Card Glassmorphism (Teal-tinted for Male, Rose-tinted for Female) */
     .result-card-male {
-        background: linear-gradient(135deg, rgba(30, 58, 138, 0.5) 0%, rgba(15, 23, 42, 0.5) 100%) !important;
-        border: 1px solid rgba(59, 130, 246, 0.3) !important;
+        background: linear-gradient(135deg, rgba(13, 148, 136, 0.25) 0%, rgba(9, 9, 11, 0.6) 100%) !important;
+        border: 1px solid rgba(20, 184, 166, 0.3) !important;
         backdrop-filter: blur(12px) !important;
         border-radius: 24px !important;
         padding: 32px !important;
         text-align: center !important;
-        box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.3) !important;
+        box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.4) !important;
         animation: slideUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
         margin-bottom: 24px;
     }
 
     .result-card-female {
-        background: linear-gradient(135deg, rgba(88, 28, 135, 0.5) 0%, rgba(15, 23, 42, 0.5) 100%) !important;
-        border: 1px solid rgba(217, 70, 239, 0.3) !important;
+        background: linear-gradient(135deg, rgba(225, 29, 72, 0.25) 0%, rgba(9, 9, 11, 0.6) 100%) !important;
+        border: 1px solid rgba(244, 114, 182, 0.3) !important;
         backdrop-filter: blur(12px) !important;
         border-radius: 24px !important;
         padding: 32px !important;
         text-align: center !important;
-        box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.3) !important;
+        box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.4) !important;
         animation: slideUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
         margin-bottom: 24px;
     }
@@ -184,7 +198,7 @@ st.markdown(r"""
     .gender-title-male {
         font-size: 38px;
         font-weight: 800;
-        color: #60A5FA;
+        color: #2DD4BF;
         display: flex;
         justify-content: center;
         align-items: center;
@@ -208,7 +222,7 @@ st.markdown(r"""
     .section-title {
         font-size: 18px;
         font-weight: 700;
-        color: #F1F5F9;
+        color: #F4F4F5;
         margin-bottom: 18px;
         display: flex;
         align-items: center;
@@ -228,8 +242,8 @@ st.markdown(r"""
     }
 
     .grid-item {
-        background: rgba(15, 23, 42, 0.4) !important;
-        border: 1px solid rgba(255, 255, 255, 0.05) !important;
+        background: rgba(9, 9, 11, 0.4) !important;
+        border: 1px solid rgba(255, 255, 255, 0.03) !important;
         border-radius: 16px !important;
         padding: 16px !important;
         display: flex;
@@ -247,7 +261,7 @@ st.markdown(r"""
     }
 
     .grid-label {
-        color: #94A3B8;
+        color: #71717A;
         font-size: 11px;
         text-transform: uppercase;
         letter-spacing: 0.05em;
@@ -255,7 +269,7 @@ st.markdown(r"""
     }
 
     .grid-value {
-        color: #F8FAFC;
+        color: #E4E4E7;
         font-size: 14px;
         font-weight: 700;
     }
@@ -271,48 +285,48 @@ st.markdown(r"""
         justify-content: space-between;
         font-weight: 600;
         font-size: 13px;
-        color: #CBD5E1;
+        color: #D4D4D8;
         margin-bottom: 6px;
     }
 
     .progress-bar-bg {
-        background-color: #334155;
+        background-color: #27272A;
         border-radius: 10px;
-        height: 10px;
+        height: 8px;
         width: 100%;
         overflow: hidden;
     }
 
     .progress-bar-fill-confidence-male {
-        background: linear-gradient(90deg, #3B82F6, #1D4ED8);
+        background: linear-gradient(90deg, #14B8A6, #0D9488);
         height: 100%;
         border-radius: 10px;
         animation: loadBar 1.2s cubic-bezier(0.1, 1, 0.1, 1) forwards;
     }
     
     .progress-bar-fill-confidence-female {
-        background: linear-gradient(90deg, #D946EF, #A21CAF);
+        background: linear-gradient(90deg, #F472B6, #E11D48);
         height: 100%;
         border-radius: 10px;
         animation: loadBar 1.2s cubic-bezier(0.1, 1, 0.1, 1) forwards;
     }
 
     .progress-bar-fill-quality {
-        background: linear-gradient(90deg, #6366F1, #3B82F6);
+        background: linear-gradient(90deg, #E2B87F, #C5A880);
         height: 100%;
         border-radius: 10px;
         animation: loadBar 1.2s cubic-bezier(0.1, 1, 0.1, 1) forwards;
     }
 
     .progress-bar-fill-visibility {
-        background: linear-gradient(90deg, #10B981, #059669);
+        background: linear-gradient(90deg, #14B8A6, #083344);
         height: 100%;
         border-radius: 10px;
         animation: loadBar 1.2s cubic-bezier(0.1, 1, 0.1, 1) forwards;
     }
 
     .progress-bar-fill-completion {
-        background: linear-gradient(90deg, #6366F1, #10B981);
+        background: linear-gradient(90deg, #E2B87F, #14B8A6);
         height: 100%;
         border-radius: 10px;
         animation: loadBar 1.2s cubic-bezier(0.1, 1, 0.1, 1) forwards;
@@ -330,7 +344,7 @@ st.markdown(r"""
         border-bottom: none;
     }
     .info-key {
-        color: #94A3B8;
+        color: #A1A1AA;
         font-weight: 500;
     }
     .info-val {
@@ -349,16 +363,16 @@ st.markdown(r"""
         display: flex;
         align-items: center;
         gap: 16px;
-        background: rgba(15, 23, 42, 0.4);
+        background: rgba(24, 24, 27, 0.4);
         border: 1px solid rgba(255, 255, 255, 0.05);
         padding: 14px 20px;
         border-radius: 16px;
         width: 100%;
-        box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        box-shadow: 0 4px 6px rgba(0,0,0,0.2);
     }
     .works-badge {
-        background: linear-gradient(135deg, #6366F1, #3B82F6);
-        color: white;
+        background: linear-gradient(135deg, #E2B87F, #C5A880);
+        color: #09090B;
         width: 28px;
         height: 28px;
         border-radius: 50%;
@@ -367,7 +381,7 @@ st.markdown(r"""
         align-items: center;
         font-weight: 700;
         font-size: 13px;
-        box-shadow: 0 0 10px rgba(99, 102, 241, 0.5);
+        box-shadow: 0 0 10px rgba(226, 184, 127, 0.4);
         flex-shrink: 0;
     }
     .works-info {
@@ -375,7 +389,7 @@ st.markdown(r"""
     }
     .works-arrow {
         font-size: 20px;
-        color: #6366F1;
+        color: #E2B87F;
         margin: 8px 0;
         font-weight: bold;
         animation: bounceArrow 2s infinite;
@@ -387,8 +401,8 @@ st.markdown(r"""
         align-items: center;
         gap: 10px;
         padding: 10px;
-        background-color: #1E293B;
-        border: 1px solid #334155;
+        background-color: #18181B;
+        border: 1px solid #27272A;
         border-radius: 12px;
         margin-bottom: 10px;
     }
@@ -397,7 +411,7 @@ st.markdown(r"""
         height: 40px;
         border-radius: 8px;
         object-fit: cover;
-        border: 1px solid #475569;
+        border: 1px solid #3F3F46;
     }
     .history-details {
         display: flex;
@@ -406,7 +420,7 @@ st.markdown(r"""
     }
     .history-meta {
         font-size: 10px;
-        color: #64748B;
+        color: #71717A;
         margin-top: 2px;
     }
 
@@ -419,11 +433,11 @@ st.markdown(r"""
         padding: 40px 20px;
     }
     .custom-spinner {
-        border: 4px solid rgba(255, 255, 255, 0.1);
+        border: 4px solid rgba(255, 255, 255, 0.05);
         width: 50px;
         height: 50px;
         border-radius: 50%;
-        border-left-color: #6366F1;
+        border-left-color: #E2B87F;
         animation: spin 1s linear infinite;
         margin-bottom: 20px;
     }
@@ -455,10 +469,10 @@ st.markdown(r"""
     /* Footer styling */
     .footer {
         text-align: center;
-        color: #64748B;
+        color: #71717A;
         margin-top: 60px;
         padding-top: 20px;
-        border-top: 1px solid #1E293B;
+        border-top: 1px solid #18181B;
         font-size: 13px;
         font-weight: 500;
     }
@@ -579,15 +593,15 @@ def main():
         
         # History rendering
         if len(st.session_state['history']) == 0:
-            st.markdown('<p style="font-size:13px; color:#64748B;">No predictions yet in this session.</p>', unsafe_allow_html=True)
+            st.markdown('<p style="font-size:13px; color:#52525B;">No predictions yet in this session.</p>', unsafe_allow_html=True)
         else:
             for item in st.session_state['history'][::-1]:
                 st.markdown(
                     f'<div class="history-item">'
                     f'  <img class="history-thumb" src="data:image/jpeg;base64,{item["thumbnail"]}"/>'
                     f'  <div class="history-details">'
-                    f'    <span style="font-weight: 700; color: {"#60A5FA" if item["gender"]=="Male" else "#F472B6"};">{item["gender"]}</span>'
-                    f'    <span style="color: #CBD5E1;">Score: {item["score"]:.3f}</span>'
+                    f'    <span style="font-weight: 700; color: {"#2DD4BF" if item["gender"]=="Male" else "#F472B6"};">{item["gender"]}</span>'
+                    f'    <span style="color: #D4D4D8;">Score: {item["score"]:.3f}</span>'
                     f'    <span class="history-meta">{item["time"]}</span>'
                     f'  </div>'
                     f'</div>',
@@ -597,12 +611,12 @@ def main():
                 st.session_state['history'] = []
                 st.rerun()
         
-        st.markdown('<hr style="border-color: #1E293B; margin: 20px 0;">', unsafe_allow_html=True)
+        st.markdown('<hr style="border-color: #18181B; margin: 20px 0;">', unsafe_allow_html=True)
         
         st.markdown(
             '<div class="sidebar-section">'
             '<div class="sidebar-title">👤 About Project</div>'
-            '<p style="font-size: 13px; color: #94A3B8; margin-bottom: 0;">'
+            '<p style="font-size: 13px; color: #A1A1AA; margin-bottom: 0;">'
             'This application evaluates portrait images to perform binary gender classification. '
             'It represents an educational machine learning project designed to show feature extraction and regression modeling on images.'
             '</p>'
@@ -626,7 +640,7 @@ def main():
         st.markdown(
             '<div class="sidebar-section">'
             '<div class="sidebar-title">📊 Dataset Information</div>'
-            '<p style="font-size: 13px; color: #94A3B8; margin-bottom: 0;">'
+            '<p style="font-size: 13px; color: #A1A1AA; margin-bottom: 0;">'
             'Trained on a balanced subset of portrait photos. Input face frames are standard 64x64 pixel matrices normalized to grayscale.'
             '</p>'
             '</div>',
@@ -636,9 +650,9 @@ def main():
         st.markdown(
             '<div class="sidebar-section">'
             '<div class="sidebar-title">💻 Developer Info</div>'
-            '<p style="font-size: 13px; color: #94A3B8; margin-bottom: 0; font-weight: 600;">'
+            '<p style="font-size: 13px; color: #A1A1AA; margin-bottom: 0; font-weight: 600;">'
             'AI Development Team<br>'
-            '<span style="font-weight: 400; color: #64748B;">SRDT Training Program</span>'
+            '<span style="font-weight: 400; color: #71717A;">SRDT Training Program</span>'
             '</p>'
             '</div>',
             unsafe_allow_html=True
@@ -646,15 +660,15 @@ def main():
         
         st.markdown(
             '<div class="sidebar-section" style="padding: 10px 20px;">'
-            '<span style="font-size: 11px; font-weight: 700; color: #64748B; text-transform: uppercase;">Version 2.0.0 (Stable)</span>'
+            '<span style="font-size: 11px; font-weight: 700; color: #71717A; text-transform: uppercase;">Version 2.0.0 (Stable)</span>'
             '</div>',
             unsafe_allow_html=True
         )
 
-    # Main Landing Header
-    st.markdown('<h1 style="text-align: center; font-size: 40px; font-weight: 800; background: linear-gradient(135deg, #6366F1 0%, #3B82F6 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 5px;">👤 Male vs Female Image Classifier</h1>', unsafe_allow_html=True)
+    # Main Landing Header (Gradient burnished gold / bronze)
+    st.markdown('<h1 style="text-align: center; font-size: 40px; font-weight: 800; background: linear-gradient(135deg, #E2B87F 0%, #C5A880 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 5px;">👤 Male vs Female Image Classifier</h1>', unsafe_allow_html=True)
     st.markdown(
-        '<p style="text-align: center; color: #94A3B8; font-size: 16px; margin-bottom: 30px;">'
+        '<p style="text-align: center; color: #A1A1AA; font-size: 16px; margin-bottom: 30px;">'
         'Upload a portrait image and let the trained Machine Learning model classify it.'
         '</p>',
         unsafe_allow_html=True
@@ -703,7 +717,7 @@ def main():
                 image_name = "captured_portrait.jpg"
 
     with tab_samples:
-        st.markdown('<p style="font-size:13.5px; color:#94A3B8; margin-bottom:12px;">Select a sample portrait to run the prediction pipeline:</p>', unsafe_allow_html=True)
+        st.markdown('<p style="font-size:13.5px; color:#A1A1AA; margin-bottom:12px;">Select a sample portrait to run the prediction pipeline:</p>', unsafe_allow_html=True)
         col_s1, col_s2, col_s3, col_s4 = st.columns(4)
         
         sample_configs = [
@@ -746,7 +760,7 @@ def main():
                 status_box.markdown(
                     f'<div class="spinner-container">'
                     f'  <div class="custom-spinner"></div>'
-                    f'  <div style="font-size: 16px; font-weight: 600; color: #6366F1;">{step_text}</div>'
+                    f'  <div style="font-size: 16px; font-weight: 600; color: #E2B87F;">{step_text}</div>'
                     f'</div>',
                     unsafe_allow_html=True
                 )
@@ -835,17 +849,17 @@ def main():
                 f'    <div class="progress-bar-bg">'
                 f'      <div class="{res["bar_class"]}" style="width: {res["confidence"]:.0f}%;"></div>'
                 f'    </div>'
-                f'    <p style="font-size: 11px; color: rgba(255,255,255,0.5); text-align: center; margin-top: 6px; font-weight: 500;">'
+                f'    <p style="font-size: 11px; color: rgba(255,255,255,0.4); text-align: center; margin-top: 6px; font-weight: 500;">'
                 f'      Confidence visualization is derived from the regression score for presentation purposes.'
                 f'    </p>'
                 f'  </div>'
                 f'  <div class="metric-container" style="justify-content: center; margin-top: 10px; margin-bottom: 12px;">'
-                f'    <div class="metric-box" style="max-width: 220px; background-color: rgba(15,23,42,0.5); border: 1px solid rgba(255,255,255,0.08);">'
+                f'    <div class="metric-box" style="max-width: 220px; background-color: rgba(9,9,11,0.5); border: 1px solid rgba(255,255,255,0.05);">'
                 f'      <div class="metric-label">Prediction Score</div>'
-                f'      <div class="metric-value" style="font-size: 26px;">{res["prediction_val"]:.4f}</div>'
+                f'      <div class="metric-value" style="font-size: 26px; color: #E2B87F;">{res["prediction_val"]:.4f}</div>'
                 f'    </div>'
                 f'  </div>'
-                f'  <div style="font-size: 13px; color: #34D399; font-weight: 600; display: inline-flex; align-items: center; gap: 6px; background-color: rgba(52, 211, 153, 0.12); padding: 6px 18px; border-radius: 50px;">'
+                f'  <div style="font-size: 13px; color: #2DD4BF; font-weight: 600; display: inline-flex; align-items: center; gap: 6px; background-color: rgba(45, 212, 191, 0.1); padding: 6px 18px; border-radius: 50px;">'
                 f'    <span>✔</span> Status: Analysis Complete'
                 f'  </div>'
                 f'</div>',
@@ -904,7 +918,7 @@ def main():
                     f'      </div>'
                     f'    </div>'
                     f'  </div>'
-                    f'  <div class="grid-item" style="width:100%; margin-top: 16px; justify-content: flex-start; gap: 12px; background: rgba(15,23,42,0.2) !important;">'
+                    f'  <div class="grid-item" style="width:100%; margin-top: 16px; justify-content: flex-start; gap: 12px; background: rgba(9,9,11,0.2) !important;">'
                     f'    <div class="grid-icon">📏</div>'
                     f'    <div class="grid-details">'
                     f'      <span class="grid-label">Input to Model</span>'
@@ -985,7 +999,7 @@ def main():
                         f'</div>'
                         f'<div class="info-row">'
                         f'  <span class="info-key">Status</span>'
-                        f'  <span class="info-val" style="color: #10B981;">✔ Model Loaded Successfully</span>'
+                        f'  <span class="info-val" style="color: #2DD4BF;">✔ Model Loaded Successfully</span>'
                         f'</div>',
                         unsafe_allow_html=True
                     )
@@ -1007,9 +1021,9 @@ def main():
                 
                 # AI Summary
                 st.markdown(
-                    f'<div class="glass-card" style="border-left: 4px solid #6366F1 !important; margin-bottom: 0px !important;">'
+                    f'<div class="glass-card" style="border-left: 4px solid #E2B87F !important; margin-bottom: 0px !important;">'
                     f'  <div class="section-title">📝 AI Summary</div>'
-                    f'  <p style="font-size: 14.5px; line-height: 1.6; color: #CBD5E1; margin: 0;">'
+                    f'  <p style="font-size: 14.5px; line-height: 1.6; color: #E4E4E7; margin: 0;">'
                     f'    Analysis completed successfully. The uploaded portrait was processed, mapped to a normalized grayscale feature space, '
                     f'    and classified using the trained Linear Regression model.'
                     f'  </p>'
@@ -1022,12 +1036,12 @@ def main():
             with st.expander("👁️ Preprocessing Visualization", expanded=False):
                 col_vis1, col_vis2, col_vis3 = st.columns([2, 1, 2])
                 with col_vis1:
-                    st.markdown("<p style='text-align:center; font-weight:700; color:#94A3B8; margin-bottom:10px;'>Original Image</p>", unsafe_allow_html=True)
+                    st.markdown("<p style='text-align:center; font-weight:700; color:#A1A1AA; margin-bottom:10px;'>Original Image</p>", unsafe_allow_html=True)
                     st.image(image_bytes, use_container_width=True)
                 with col_vis2:
-                    st.markdown("<p style='text-align:center; font-size: 32px; font-weight:700; color:#6366F1; margin-top:40px;'>⟶</p>", unsafe_allow_html=True)
+                    st.markdown("<p style='text-align:center; font-size: 32px; font-weight:700; color:#E2B87F; margin-top:40px;'>⟶</p>", unsafe_allow_html=True)
                 with col_vis3:
-                    st.markdown("<p style='text-align:center; font-weight:700; color:#6366F1; margin-bottom:10px;'>Model Input (64×64 Grayscale)</p>", unsafe_allow_html=True)
+                    st.markdown("<p style='text-align:center; font-weight:700; color:#E2B87F; margin-bottom:10px;'>Model Input (64×64 Grayscale)</p>", unsafe_allow_html=True)
                     # Display the actual 64x64 grayscale matrix
                     st.image(res["img_gray"], width=150)
 
@@ -1048,44 +1062,44 @@ def main():
                 unsafe_allow_html=True
             )
             
-            st.markdown("<p style='font-size:13px; font-weight:700; color:#94A3B8; margin-top:20px; margin-bottom:5px;'>Confusion Matrix</p>", unsafe_allow_html=True)
+            st.markdown("<p style='font-size:13px; font-weight:700; color:#A1A1AA; margin-top:20px; margin-bottom:5px;'>Confusion Matrix</p>", unsafe_allow_html=True)
             # Beautiful HTML Confusion Matrix
             st.markdown(
                 f'<div style="display: grid; grid-template-columns: 80px 1fr 1fr; gap: 8px; text-align: center; font-size: 12px; font-weight: 600; margin-top: 10px; font-family: Outfit;">'
                 f'  <div></div>'
-                f'  <div style="color: #60A5FA;">Pred Male</div>'
+                f'  <div style="color: #2DD4BF;">Pred Male</div>'
                 f'  <div style="color: #F472B6;">Pred Female</div>'
-                f'  <div style="color: #60A5FA; text-align: right; align-self: center;">Act Male</div>'
-                f'  <div style="background-color: rgba(59, 130, 246, 0.2); border: 1px dashed rgba(59,130,246,0.5); border-radius: 8px; padding: 8px; color: #F8FAFC;">'
-                f'    1524<br><span style="font-size: 9px; color: #94A3B8;">True Male</span>'
+                f'  <div style="color: #2DD4BF; text-align: right; align-self: center;">Act Male</div>'
+                f'  <div style="background-color: rgba(13, 148, 136, 0.2); border: 1px dashed rgba(13,148,136,0.5); border-radius: 8px; padding: 8px; color: #F8FAFC;">'
+                f'    1524<br><span style="font-size: 9px; color: #A1A1AA;">True Male</span>'
                 f'  </div>'
-                f'  <div style="background-color: rgba(255, 255, 255, 0.03); border: 1px solid rgba(255,255,255,0.05); border-radius: 8px; padding: 8px; color: #94A3B8;">'
-                f'    284<br><span style="font-size: 9px; color: #64748B;">False Female</span>'
+                f'  <div style="background-color: rgba(255, 255, 255, 0.03); border: 1px solid rgba(255,255,255,0.05); border-radius: 8px; padding: 8px; color: #A1A1AA;">'
+                f'    284<br><span style="font-size: 9px; color: #71717A;">False Female</span>'
                 f'  </div>'
                 f'  <div style="color: #F472B6; text-align: right; align-self: center;">Act Female</div>'
-                f'  <div style="background-color: rgba(255, 255, 255, 0.03); border: 1px solid rgba(255,255,255,0.05); border-radius: 8px; padding: 8px; color: #94A3B8;">'
-                f'    322<br><span style="font-size: 9px; color: #64748B;">False Male</span>'
+                f'  <div style="background-color: rgba(255, 255, 255, 0.03); border: 1px solid rgba(255,255,255,0.05); border-radius: 8px; padding: 8px; color: #A1A1AA;">'
+                f'    322<br><span style="font-size: 9px; color: #71717A;">False Male</span>'
                 f'  </div>'
-                f'  <div style="background-color: rgba(244, 114, 182, 0.2); border: 1px dashed rgba(244,114,182,0.5); border-radius: 8px; padding: 8px; color: #F8FAFC;">'
-                f'    1526<br><span style="font-size: 9px; color: #94A3B8;">True Female</span>'
+                f'  <div style="background-color: rgba(225, 29, 72, 0.2); border: 1px dashed rgba(225,29,72,0.5); border-radius: 8px; padding: 8px; color: #F8FAFC;">'
+                f'    1526<br><span style="font-size: 9px; color: #A1A1AA;">True Female</span>'
                 f'  </div>'
                 f'</div>',
                 unsafe_allow_html=True
             )
             
         with col_perf2:
-            st.markdown("<p style='font-size:13px; font-weight:700; color:#94A3B8; margin-bottom:8px;'>ROC Curve (Evaluated Model)</p>", unsafe_allow_html=True)
-            # Beautiful SVG ROC Curve
+            st.markdown("<p style='font-size:13px; font-weight:700; color:#A1A1AA; margin-bottom:8px;'>ROC Curve (Evaluated Model)</p>", unsafe_allow_html=True)
+            # Beautiful SVG ROC Curve (using Gold Aurora stroke)
             st.markdown(
-                f'<svg width="100%" height="180" viewBox="0 0 100 100" style="background-color: rgba(15,23,42,0.4); border-radius: 12px; border: 1px solid rgba(255,255,255,0.05); padding: 12px; font-family: Outfit;">'
-                f'  <line x1="10" y1="90" x2="90" y2="90" stroke="#475569" stroke-width="0.5" stroke-dasharray="1" />'
-                f'  <line x1="10" y1="10" x2="10" y2="90" stroke="#475569" stroke-width="0.5" stroke-dasharray="1" />'
-                f'  <line x1="10" y1="90" x2="90" y2="10" stroke="#334155" stroke-width="0.5" stroke-dasharray="2" />'
-                f'  <path d="M 10,90 Q 20,25 90,10" fill="none" stroke="#6366F1" stroke-width="2.5" />'
-                f'  <text x="50" y="98" fill="#94A3B8" font-size="5" text-anchor="middle">False Positive Rate</text>'
-                f'  <text x="5" y="50" fill="#94A3B8" font-size="5" text-anchor="middle" transform="rotate(-90 5 50)">True Positive Rate</text>'
-                f'  <rect x="58" y="20" width="28" height="12" rx="2" fill="#1E293B" stroke="#475569" stroke-width="0.3" />'
-                f'  <text x="72" y="27" fill="#F8FAFC" font-size="4" text-anchor="middle" font-weight="bold">AUC = 0.88</text>'
+                f'<svg width="100%" height="180" viewBox="0 0 100 100" style="background-color: rgba(24,24,27,0.4); border-radius: 12px; border: 1px solid rgba(255,255,255,0.05); padding: 12px; font-family: Outfit;">'
+                f'  <line x1="10" y1="90" x2="90" y2="90" stroke="#3F3F46" stroke-width="0.5" stroke-dasharray="1" />'
+                f'  <line x1="10" y1="10" x2="10" y2="90" stroke="#3F3F46" stroke-width="0.5" stroke-dasharray="1" />'
+                f'  <line x1="10" y1="90" x2="90" y2="10" stroke="#27272A" stroke-width="0.5" stroke-dasharray="2" />'
+                f'  <path d="M 10,90 Q 20,25 90,10" fill="none" stroke="#E2B87F" stroke-width="2.5" />'
+                f'  <text x="50" y="98" fill="#71717A" font-size="5" text-anchor="middle">False Positive Rate</text>'
+                f'  <text x="5" y="50" fill="#71717A" font-size="5" text-anchor="middle" transform="rotate(-90 5 50)">True Positive Rate</text>'
+                f'  <rect x="58" y="20" width="28" height="12" rx="2" fill="#18181B" stroke="#3F3F46" stroke-width="0.3" />'
+                f'  <text x="72" y="27" fill="#F4F4F5" font-size="4" text-anchor="middle" font-weight="bold">AUC = 0.88</text>'
                 f'</svg>',
                 unsafe_allow_html=True
             )
@@ -1099,7 +1113,7 @@ def main():
             f'    <div class="works-badge">1</div>'
             f'    <div class="works-info">'
             f'      <strong>Upload Image</strong><br>'
-            f'      <span style="font-size: 12px; color: #94A3B8;">Input files via drag & drop, take a picture with a webcam, or select a sample image.</span>'
+            f'      <span style="font-size: 12px; color: #A1A1AA;">Input files via drag & drop, take a picture with a webcam, or select a sample image.</span>'
             f'    </div>'
             f'  </div>'
             f'  <div class="works-arrow">↓</div>'
@@ -1107,7 +1121,7 @@ def main():
             f'    <div class="works-badge">2</div>'
             f'    <div class="works-info">'
             f'      <strong>Face Detection</strong><br>'
-            f'      <span style="font-size: 12px; color: #94A3B8;">OpenCV Haar Cascade scans the frame to verify face presence.</span>'
+            f'      <span style="font-size: 12px; color: #A1A1AA;">OpenCV Haar Cascade scans the frame to verify face presence.</span>'
             f'    </div>'
             f'  </div>'
             f'  <div class="works-arrow">↓</div>'
@@ -1115,7 +1129,7 @@ def main():
             f'    <div class="works-badge">3</div>'
             f'    <div class="works-info">'
             f'      <strong>Resize (64×64)</strong><br>'
-            f'      <span style="font-size: 12px; color: #94A3B8;">Standardizes portrait height and width to expected model dimensions.</span>'
+            f'      <span style="font-size: 12px; color: #A1A1AA;">Standardizes portrait height and width to expected model dimensions.</span>'
             f'    </div>'
             f'  </div>'
             f'  <div class="works-arrow">↓</div>'
@@ -1123,7 +1137,7 @@ def main():
             f'    <div class="works-badge">4</div>'
             f'    <div class="works-info">'
             f'      <strong>Convert to Grayscale</strong><br>'
-            f'      <span style="font-size: 12px; color: #94A3B8;">Collapses color channels to isolate structural and lighting boundaries.</span>'
+            f'      <span style="font-size: 12px; color: #A1A1AA;">Collapses color channels to isolate structural and lighting boundaries.</span>'
             f'    </div>'
             f'  </div>'
             f'  <div class="works-arrow">↓</div>'
@@ -1131,7 +1145,7 @@ def main():
             f'    <div class="works-badge">5</div>'
             f'    <div class="works-info">'
             f'      <strong>Flatten Pixels</strong><br>'
-            f'      <span style="font-size: 12px; color: #94A3B8;">Transforms 2D grayscale frames into a 1D vector of 4,096 numerical features.</span>'
+            f'      <span style="font-size: 12px; color: #A1A1AA;">Transforms 2D grayscale frames into a 1D vector of 4,096 numerical features.</span>'
             f'    </div>'
             f'  </div>'
             f'  <div class="works-arrow">↓</div>'
@@ -1139,7 +1153,7 @@ def main():
             f'    <div class="works-badge">6</div>'
             f'    <div class="works-info">'
             f'      <strong>Linear Regression Prediction</strong><br>'
-            f'      <span style="font-size: 12px; color: #94A3B8;">Calculates regression value via linear weights learned during training.</span>'
+            f'      <span style="font-size: 12px; color: #A1A1AA;">Calculates regression value via linear weights learned during training.</span>'
             f'    </div>'
             f'  </div>'
             f'  <div class="works-arrow">↓</div>'
@@ -1147,7 +1161,7 @@ def main():
             f'    <div class="works-badge">7</div>'
             f'    <div class="works-info">'
             f'      <strong>Final Classification</strong><br>'
-            f'      <span style="font-size: 12px; color: #94A3B8;">Applies decision boundary constraints (Score &ge; 0.5 is Male, &lt; 0.5 is Female).</span>'
+            f'      <span style="font-size: 12px; color: #A1A1AA;">Applies decision boundary constraints (Score &ge; 0.5 is Male, &lt; 0.5 is Female).</span>'
             f'    </div>'
             f'  </div>'
             f'</div>',
@@ -1156,9 +1170,9 @@ def main():
 
     # Responsible AI Notice Card
     st.markdown(
-        f'<div class="glass-card" style="border-top: 4px solid #6366F1 !important; margin-top: 25px;">'
-        f'  <div class="section-title" style="color: #6366F1;">⚖️ Responsible AI Notice</div>'
-        f'  <p style="font-size: 14px; line-height: 1.6; color: #CBD5E1; margin: 0;">'
+        f'<div class="glass-card" style="border-top: 4px solid #E2B87F !important; margin-top: 25px;">'
+        f'  <div class="section-title" style="color: #E2B87F;">⚖️ Responsible AI Notice</div>'
+        f'  <p style="font-size: 14px; line-height: 1.6; color: #D4D4D8; margin: 0;">'
         f'    This application performs binary image classification using a Linear Regression model trained on a specific dataset. '
         f'    Predictions are based only on learned image patterns and should not be interpreted as determining a person\'s identity or gender. '
         f'    Results may vary due to lighting, pose, occlusion, image quality, and dataset limitations.'
