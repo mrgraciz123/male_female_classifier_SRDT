@@ -1,152 +1,291 @@
-# Male vs Female Image Classifier
+# 👤 Male vs Female Image Classifier
 
-An educational college assignment project implementing a binary image classifier to distinguish between **Male** and **Female** portraits. 
+<p align="center">
 
-This project follows the architecture and coding style of a basic Cats vs Dogs classifier but utilizes **OpenCV** for preprocessing, **NumPy** & **Pandas** for data handling, and scikit-learn's **Linear Regression** model under a threshold-based classification scheme.
+![Python](https://img.shields.io/badge/Python-3.10+-blue?style=for-the-badge&logo=python)
+![OpenCV](https://img.shields.io/badge/OpenCV-Image%20Processing-green?style=for-the-badge&logo=opencv)
+![Scikit Learn](https://img.shields.io/badge/Scikit--Learn-Linear%20Regression-orange?style=for-the-badge&logo=scikitlearn)
+![Streamlit](https://img.shields.io/badge/Streamlit-Web%20Application-red?style=for-the-badge&logo=streamlit)
+![License](https://img.shields.io/badge/License-MIT-success?style=for-the-badge)
+
+</p>
+
+<p align="center">
+
+### 🚀 Upload • Analyze • Predict
+
+*A Machine Learning project that classifies facial images as Male or Female using OpenCV, Scikit-Learn, and Streamlit.*
+
+</p>
 
 ---
 
-## Project Description
+# 📸 Application Preview
 
-In this project, image classification is approached through a linear regression lens rather than deep learning or logistic regression. 
-Each input image is read in color, resized to $64 \times 64$ pixels, converted to grayscale, and flattened into a $4096$-dimensional feature vector. The feature values are scaled to $[0, 1]$ via normalization.
-A linear regression model is trained to output a continuous value between `0` (Female) and `1` (Male). During inference, a threshold of `0.5` is applied:
-- $\text{Prediction} \ge 0.5 \rightarrow \text{Male}$
-- $\text{Prediction} < 0.5 \rightarrow \text{Female}$
+> Replace these placeholders with your own screenshots.
 
-This project provides a beginner-friendly introduction to image classification pipeline elements, data loading, linear models, and feature preprocessing without deep learning complexity.
+| Home Screen | Prediction Result |
+|-------------|-------------------|
+| ![](assets/home.png) | ![](assets/result.png) |
 
 ---
 
-## Project Structure
+# ✨ Features
+
+- 📤 Drag & Drop Image Upload
+- 🤖 Automatic Prediction
+- 🖼️ Image Preview
+- 📷 Image Analysis
+- ⚡ Fast Inference
+- 🌙 Modern Dark UI
+- 📊 Model Information
+- 💾 Pickle Model Support
+- 📱 Responsive Design
+
+---
+
+# 🏗️ Project Architecture
+
+```text
+             ┌────────────────────┐
+             │  Upload an Image   │
+             └─────────┬──────────┘
+                       │
+                       ▼
+             ┌────────────────────┐
+             │ OpenCV Processing  │
+             └─────────┬──────────┘
+                       │
+       Resize → Grayscale → Flatten
+                       │
+                       ▼
+             ┌────────────────────┐
+             │ Linear Regression  │
+             └─────────┬──────────┘
+                       │
+                       ▼
+             ┌────────────────────┐
+             │ Prediction Result  │
+             └────────────────────┘
+```
+
+---
+
+# 📂 Project Structure
 
 ```text
 Male_Female_Classifier/
 │
 ├── dataset/
-│     ├── male/            # Folder containing Male images
-│     └── female/          # Folder containing Female images
+│   ├── Male/
+│   └── Female/
 │
-├── train_model.ipynb       # Jupyter Notebook to load data, preprocess, and train
-├── train_model.py         # Python script to load data, preprocess, and train (Alternative)
-├── predict.py             # Script to make predictions on test/external images
-├── app.py                 # Streamlit web application for interactive classification
-├── gender_model.pkl       # Saved trained Linear Regression model weights (Serialized)
-├── requirements.txt       # Project dependencies
-└── README.md              # Project documentation
+├── app.py
+├── train_model.py
+├── predict.py
+├── gender_model.pkl
+├── requirements.txt
+└── README.md
 ```
 
 ---
 
-## Dataset Format
+# 📁 Dataset
 
-Organize your images in the `dataset` folder with two subdirectories:
 ```text
 dataset/
-├── male/
-│     ├── image1.jpg
-│     ├── image2.jpg
+│
+├── Male/
+│     ├── 001.jpg
+│     ├── 002.jpg
 │     └── ...
-└── female/
-      ├── image1.jpg
-      ├── image2.jpg
+│
+└── Female/
+      ├── 001.jpg
+      ├── 002.jpg
       └── ...
 ```
 
 ---
 
-## Installation
+# ⚙️ Image Processing Pipeline
 
-1. Ensure you have Python installed (Python 3.8+ is recommended).
-2. Install the required dependencies:
-   ```bash
-   pip install -r requirements.txt
-   ```
+```text
+🖼️ Input Image
+      │
+      ▼
+📏 Resize (64×64)
+      │
+      ▼
+⚫ Convert to Grayscale
+      │
+      ▼
+🧩 Flatten Pixels (4096 Features)
+      │
+      ▼
+📊 Normalize
+      │
+      ▼
+🧠 Linear Regression
+      │
+      ▼
+👤 Male / Female
+```
 
 ---
 
-## Usage
+# 🛠️ Tech Stack
 
-### 1. Training the Model
-You can train the model using either the Jupyter Notebook or the Python script:
+| Technology | Usage |
+|------------|------|
+| 🐍 Python | Programming |
+| 📷 OpenCV | Image Processing |
+| 🔢 NumPy | Numerical Computing |
+| 📊 Pandas | Data Handling |
+| 🤖 Scikit-Learn | Machine Learning |
+| 🌐 Streamlit | Web Application |
+| 💾 Pickle | Model Serialization |
 
-#### Option A: Using the Jupyter Notebook
-Open and run all cells in `train_model.ipynb` using Jupyter Lab, VS Code, or any other notebook editor.
+---
 
-#### Option B: Using the Python script
-Run the script from your terminal:
+# 🚀 Installation
+
+```bash
+git clone https://github.com/yourusername/male-female-classifier.git
+
+cd male-female-classifier
+
+pip install -r requirements.txt
+```
+
+---
+
+# ▶️ Train Model
+
 ```bash
 python train_model.py
 ```
 
-**Expected Training Output Example:**
+Output
+
 ```text
-Scanning dataset directory: dataset
-Loading images from category 'female' (Label: 0)...
-Successfully loaded 500 images from 'female'.
-Loading images from category 'male' (Label: 1)...
-Successfully loaded 500 images from 'male'.
+✔ Dataset Loaded
 
-Dataset loaded successfully!
-Total samples: 1000
-Features dimension: 4096
-Label Distribution:
-Male (1)      500
-Female (0)    500
-dtype: int64
+✔ Images Processed
 
-Training Linear Regression model...
+✔ Model Trained
 
-========================================
-MODEL EVALUATION RESULTS
-========================================
-Train R² Score:                  0.4851
-Test R² Score:                   0.1245
-Train Classification Accuracy:   94.50%
-Test Classification Accuracy:    71.50%
-========================================
-
-Saving the trained model to 'gender_model.pkl'...
-Model saved successfully! You can now use predict.py for inference.
+✔ gender_model.pkl Created
 ```
-
-### 2. Predict on a Custom Image via Command Line
-To classify a new image, use the inference script `predict.py` and pass the path to the target image as a command-line argument:
-```bash
-python predict.py <path_to_image>
-```
-
-**Example Command:**
-```bash
-python predict.py dataset/male/063429.jpg.jpg
-```
-
-**Expected Output Example:**
-```text
-========================================
-PREDICTION RESULT
-========================================
-Image Path:       dataset/male/063429.jpg.jpg
-Raw Output Value: 1.0166
-Predicted Gender: Male
-========================================
-```
-
-### 3. Running the Streamlit Web Application
-To start the interactive web interface where you can upload images directly in your browser:
-```bash
-streamlit run app.py
-```
-This will start a local server and open the application page in your web browser. You can upload an image, view the preprocessed representation, and click "Classify Image" to run inference.
 
 ---
 
-## Image Preprocessing Details
+# 🌐 Run Application
 
-Every image undergoes the following sequence of transformations before model ingestion:
-1. **Reading**: Loaded via OpenCV `cv2.imread()`.
-2. **Resizing**: Downscaled/upscaled to a uniform $64 \times 64$ grid (`cv2.resize()`) to establish a fixed length feature input.
-3. **Grayscaling**: Converted to single-channel gray (`cv2.COLOR_BGR2GRAY`) to reduce complexity.
-4. **Flattening**: Reshaped into a 1D vector of length $4096 = 64 \times 64 \times 1$.
-5. **Normalization**: Scaled by dividing by $255.0$ to maps pixel integers to $[0, 1]$.
-6. **Encoding**: Categorized to continuous training targets: `Male` = $1$, `Female` = $0$.
+```bash
+streamlit run app.py
+```
+
+---
+
+# 📊 Model Information
+
+| Property | Value |
+|----------|-------|
+| Algorithm | Linear Regression |
+| Input Size | 64 × 64 |
+| Color Format | Grayscale |
+| Features | 4096 |
+| Framework | Scikit-Learn |
+| Deployment | Streamlit |
+
+---
+
+# 📈 Workflow
+
+```mermaid
+flowchart LR
+
+A[Upload Image]
+--> B[OpenCV]
+
+B --> C[Resize]
+
+C --> D[Grayscale]
+
+D --> E[Flatten]
+
+E --> F[Linear Regression]
+
+F --> G[Prediction]
+```
+
+---
+
+# 🎯 Sample Output
+
+```text
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+👤 Prediction
+
+Male
+
+Prediction Score
+
+1.873
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+```
+
+---
+
+# ⚠️ Responsible AI
+
+> This project is developed **for educational purposes only**.
+
+The model performs **binary image classification** using patterns learned from the training dataset.
+
+Prediction quality depends on:
+
+- 📷 Lighting
+- 😊 Face Visibility
+- 📐 Pose
+- 🖼️ Image Quality
+- 📚 Dataset Diversity
+
+This application **does not determine a person's identity or gender identity.**
+
+---
+
+# 🚧 Future Improvements
+
+- ✅ Logistic Regression
+- ✅ Support Vector Machine
+- ✅ CNN
+- ✅ Face Detection
+- ✅ Live Webcam
+- ✅ Better Dataset
+- ✅ REST API
+- ✅ Docker Deployment
+- ✅ Cloud Deployment
+
+---
+
+# 👨‍💻 Author
+
+## Abhay Shanker Tiwari
+
+🎓 B.Tech CSE
+
+💻 Machine Learning Enthusiast
+
+🚀 Building AI Projects with Python
+
+---
+
+<p align="center">
+
+⭐ If you like this project, don't forget to star the repository!
+
+</p>
