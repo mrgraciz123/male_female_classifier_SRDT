@@ -22,8 +22,6 @@
 
 # 📸 Application Preview
 
-> Replace these placeholders with your own screenshots.
-
 | Home Screen | Prediction Result |
 |-------------|-------------------|
 | ![](assets/home.png) | ![](assets/result.png) |
