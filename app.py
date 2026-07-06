@@ -476,6 +476,80 @@ st.markdown(r"""
         font-size: 13px;
         font-weight: 500;
     }
+
+    /* Tablet and Mobile Responsive Overrides */
+    @media (max-width: 768px) {
+        h1 {
+            font-size: 32px !important;
+        }
+        .gender-title-male, .gender-title-female {
+            font-size: 30px !important;
+        }
+        .glass-card {
+            padding: 20px !important;
+            border-radius: 16px !important;
+        }
+        .result-card-male, .result-card-female {
+            padding: 24px 20px !important;
+            border-radius: 20px !important;
+        }
+        .grid-container {
+            gap: 12px;
+        }
+    }
+
+    @media (max-width: 480px) {
+        h1 {
+            font-size: 26px !important;
+        }
+        .gender-title-male, .gender-title-female {
+            font-size: 24px !important;
+        }
+        .glass-card {
+            padding: 16px !important;
+            border-radius: 12px !important;
+        }
+        .result-card-male, .result-card-female {
+            padding: 20px 14px !important;
+            border-radius: 16px !important;
+        }
+        .grid-container {
+            grid-template-columns: 1fr !important;
+            gap: 8px;
+        }
+        .works-step {
+            padding: 10px 12px !important;
+            gap: 10px !important;
+            border-radius: 12px !important;
+        }
+        .works-badge {
+            width: 24px !important;
+            height: 24px !important;
+            font-size: 11px !important;
+        }
+        .works-info strong {
+            font-size: 13px !important;
+        }
+        .works-info span {
+            font-size: 11px !important;
+        }
+        .metric-value {
+            font-size: 20px !important;
+        }
+        .stTabs [data-baseweb="tab"] {
+            font-size: 12px !important;
+            height: 36px !important;
+            padding: 0 8px !important;
+        }
+        [data-testid="stFileUploader"], [data-testid="stCameraInput"] {
+            padding: 12px !important;
+            border-radius: 16px !important;
+        }
+        .preview-img {
+            border-radius: 16px !important;
+            max-height: 260px !important;
+        }
+    }
     </style>
 """, unsafe_allow_html=True)
 
