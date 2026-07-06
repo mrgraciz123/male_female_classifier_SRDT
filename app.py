@@ -666,7 +666,7 @@ def main():
         )
 
     # Main Landing Header (Gradient burnished gold / bronze)
-    st.markdown('<h1 style="text-align: center; font-size: 40px; font-weight: 800; background: linear-gradient(135deg, #E2B87F 0%, #C5A880 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 5px;">👤 Male vs Female Image Classifier</h1>', unsafe_allow_html=True)
+    st.markdown('<h1 style="text-align: center; font-size: 38px; font-weight: 800; color: #E2B87F; margin-bottom: 5px;">👤 Male vs Female Image Classifier</h1>', unsafe_allow_html=True)
     st.markdown(
         '<p style="text-align: center; color: #A1A1AA; font-size: 16px; margin-bottom: 30px;">'
         'Upload a portrait image and let the trained Machine Learning model classify it.'
